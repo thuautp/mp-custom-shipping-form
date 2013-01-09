@@ -1,0 +1,3 @@
+version 1.0 - 9th Jan 2013
+
+	first release

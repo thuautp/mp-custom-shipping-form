@@ -1,0 +1,26 @@
+/**** MPCSF Front end CSS ***/
+
+span.mpcsf-error-message {
+  display: inline-block;
+  padding: 4px;
+  margin-bottom: 5px;
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 14px;
+  color: #ffffff;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #b94a48;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+textarea.mpcsf-input-textarea {
+	width: 98%;
+}
+
+input.mpcsf-input-radio {
+	vertical-align: baseline;
+}
