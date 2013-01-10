@@ -1,6 +1,8 @@
 MarketPress Custom Shipping Form Plugin
 =======================================
 
+~Current Version:1.0.0~
+
 Author: Nathan Onn - <a href="http://www.marketpressthemes.com">MarketPressThemes.com</a>
 
 <h2><u>Overview</u></h2>
