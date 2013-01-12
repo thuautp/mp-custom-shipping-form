@@ -1,3 +1,6 @@
+Version 1.1.2 - 
+	Fixed empty cookies issue in safari.
+
 Version 1.1.0 - 
 	Added auto updater
 

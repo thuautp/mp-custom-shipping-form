@@ -5,7 +5,7 @@ Plugin URI: http://www.smashingadvantage.com
 Description: MarketPress Custom Shipping Form Plugin allows you to insert (up to 10) custom fields into the shipping form of your MarketPress sites. This plugin aims to take the pain out of customize your MarketPress shipping form manually and making it very simple for you to customize your shipping form with no technical knowledge needed.
 Author: Nathan Onn - MarketPressThemes.com
 Author URI: http://www.smashingadvantage.com
-Version: 1.1.0
+Version: 1.1.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,9 +61,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 			        add_action('wp_enqueue_scripts', array(&$this, 'mpcsf_register_front_end_css'));
 
 					// Edit profile
-					add_action( 'profile_update', 'mpcsf_user_profile_custom_field_update' , 11);
-					add_action( 'edit_user_profile', 'mpcsf_user_profile_custom_fields' , 11);
-					add_action( 'show_user_profile', 'mpcsf_user_profile_custom_fields' , 11);
+					add_action( 'profile_update', 'mpcsf_user_profile_custom_field_update' , 10);
+					add_action( 'edit_user_profile', 'mpcsf_user_profile_custom_fields' , 10);
+					add_action( 'show_user_profile', 'mpcsf_user_profile_custom_fields' , 10);
 
 					// shopping form
 					add_filter( 'mp_checkout_shipping_field', 'mpcsf_show_custom_fields' , 10 );
@@ -80,7 +80,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 				  	add_filter( 'mp_shipped_order_notification' , 'mpcsf_customfield_filter_email_order_notification' , 10 , 2);
 
 				  	//updater
-				  	add_action( 'init', array(&$this, 'github_plugin_updater_test_init') );
+				  	add_action( 'init', array(&$this, 'mpcsf_plugin_updater_init') );
 
 			    }
 			    
@@ -115,7 +115,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 					wp_enqueue_style('mpcsf-front-end-css', $this->plugin_url . 'css/mpcsf-frontend-css.css', null, null);
 				}
 
-				function github_plugin_updater_test_init() {
+				function mpcsf_plugin_updater_init() {
 
 					include_once( $this->plugin_path .'inc/mpcsf-updater.php' );
 

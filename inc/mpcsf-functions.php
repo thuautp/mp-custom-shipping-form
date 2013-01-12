@@ -73,6 +73,7 @@
 
                       case 'checkbox':
                         $cf = esc_attr($cf);
+                        $output .= '<input type="hidden" name="mpcsf_custom_field_cf'.$i.'" value="0" />';
                         $output .= '<label><input type="checkbox" name="mpcsf_custom_field_cf'.$i.'" id="mpcsf_custom_field_'.$i.'" value="1"'. (($cf) ? ' checked="checked"' : '') .' class="mpcsf-input-checkbox" /> '. (!empty($cfdesc) ? __($cfdesc, 'mpcsf') : '') .'</label>';
                         break;
                       
@@ -184,128 +185,28 @@
       $cfsettings = wpsf_get_settings( MPCSF_PATH .'inc/mpcsf-custom.php' );
 
       for ($i=1; $i <= 10; $i++) {
-
-        if (empty($_POST['mpcsf_custom_field_cf'.$i])) {
-          if ($cfsettings['mpcsfcustom_custom_field_'.$i.'_required_field'] == 'yes') {
-            add_filter('mpcsf_custom_field_'.$i.'_error' , 'mpcsf_customfield_error_message');
-            $mp->checkout_error = true;
+          if (empty($_POST['mpcsf_custom_field_cf'.$i])) {
+            if ($cfsettings['mpcsfcustom_custom_field_'.$i.'_required_field'] == 'yes') {
+              add_filter('mpcsf_custom_field_'.$i.'_error' , 'mpcsf_customfield_error_message');
+              $mp->checkout_error = true;
+            }
           }
-        }
-
       }
 
-  		if (isset($_POST['mpcsf_custom_field_cf1'])) {
-
-  			$_SESSION['mpcsf_custom_field']['cf1'] = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf1'])));
-  			$custom_field_1 = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf1'])));
-  		} else {
-
-        $custom_field_1 = esc_html(esc_attr(trim($meta['cf1'])));
-      }
-  			
-  		if (isset($_POST['mpcsf_custom_field_cf2'])) {
-
-  			$_SESSION['mpcsf_custom_field']['cf2'] = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf2'])));
-  			$custom_field_2 = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf2'])));
-  		} else {
-
-  			$custom_field_2 = esc_html(esc_attr(trim($meta['cf2'])));
-  		}
-  			
-
-  		if (isset($_POST['mpcsf_custom_field_cf3'])) {
-
-  			$_SESSION['mpcsf_custom_field']['cf3'] = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf3'])));
-  			$custom_field_3 = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf3'])));
-  		} else {
-
-  			$custom_field_3 = esc_html(esc_attr(trim($meta['cf3'])));
-  		}
-  			
-
-  		if (isset($_POST['mpcsf_custom_field_cf4'])) {
-
-  			$_SESSION['mpcsf_custom_field']['cf4'] = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf4'])));
-  			$custom_field_4 = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf4'])));
-  		} else {
-
-  			$custom_field_4 = esc_html(esc_attr(trim($meta['cf4'])));
-  		}
-  			
-
-  		if (isset($_POST['mpcsf_custom_field_cf5'])) {
-
-  			$_SESSION['mpcsf_custom_field']['cf5'] = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf5'])));
-  			$custom_field_5 = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf5'])));
-  		} else {
-
-  			$custom_field_5 = esc_html(esc_attr(trim($meta['cf5'])));
-  		}
-
-      if (isset($_POST['mpcsf_custom_field_cf6'])) {
-
-        $_SESSION['mpcsf_custom_field']['cf6'] = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf6'])));
-        $custom_field_6 = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf6'])));
-      } else {
-
-        $custom_field_6 = esc_html(esc_attr(trim($meta['cf6'])));
-      }
-        
-      if (isset($_POST['mpcsf_custom_field_cf7'])) {
-
-        $_SESSION['mpcsf_custom_field']['cf7'] = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf7'])));
-        $custom_field_7 = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf7'])));
-      } else {
-
-        $custom_field_7 = esc_html(esc_attr(trim($meta['cf7'])));
-      }
-        
-
-      if (isset($_POST['mpcsf_custom_field_cf8'])) {
-
-        $_SESSION['mpcsf_custom_field']['cf8'] = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf8'])));
-        $custom_field_8 = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf8'])));
-      } else {
-
-        $custom_field_8 = esc_html(esc_attr(trim($meta['cf8'])));
-      }
-        
-
-      if (isset($_POST['mpcsf_custom_field_cf9'])) {
-
-        $_SESSION['mpcsf_custom_field']['cf9'] = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf9'])));
-        $custom_field_9 = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf9'])));
-      } else {
-
-        $custom_field_9 = esc_html(esc_attr(trim($meta['cf9'])));
-      }
-        
-
-      if (isset($_POST['mpcsf_custom_field_cf10'])) {
-
-        $_SESSION['mpcsf_custom_field']['cf10'] = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf10'])));
-        $custom_field_10 = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf10'])));
-      } else {
-
-        $custom_field_10 = esc_html(esc_attr(trim($meta['cf10'])));
-      }
-
-  	  $custom_field_meta = array(
-            'cf1' => $custom_field_1,
-            'cf2' => $custom_field_2,
-            'cf3' => $custom_field_3,
-            'cf4' => $custom_field_4,
-            'cf5' => $custom_field_5, 
-            'cf6' => $custom_field_6,
-            'cf7' => $custom_field_7,
-            'cf8' => $custom_field_8,
-            'cf9' => $custom_field_9,
-            'cf10' => $custom_field_10		 
-  	      );
+      $_SESSION['mpcsf_custom_field']['cf1'] = isset($_POST['mpcsf_custom_field_cf1']) ? esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf1']))) : ( !empty($meta['cf1']) ? esc_html(esc_attr(trim($meta['cf1']))) : '');
+      $_SESSION['mpcsf_custom_field']['cf2'] = isset($_POST['mpcsf_custom_field_cf2']) ? esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf2']))) : ( !empty($meta['cf2']) ? esc_html(esc_attr(trim($meta['cf2']))) : '');
+      $_SESSION['mpcsf_custom_field']['cf3'] = isset($_POST['mpcsf_custom_field_cf3']) ? esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf3']))) : ( !empty($meta['cf3']) ? esc_html(esc_attr(trim($meta['cf3']))) : '');
+      $_SESSION['mpcsf_custom_field']['cf4'] = isset($_POST['mpcsf_custom_field_cf4']) ? esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf4']))) : ( !empty($meta['cf4']) ? esc_html(esc_attr(trim($meta['cf4']))) : '');
+      $_SESSION['mpcsf_custom_field']['cf5'] = isset($_POST['mpcsf_custom_field_cf5']) ? esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf5']))) : ( !empty($meta['cf5']) ? esc_html(esc_attr(trim($meta['cf5']))) : '');
+      $_SESSION['mpcsf_custom_field']['cf6'] = isset($_POST['mpcsf_custom_field_cf6']) ? esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf6']))) : ( !empty($meta['cf6']) ? esc_html(esc_attr(trim($meta['cf6']))) : '');
+      $_SESSION['mpcsf_custom_field']['cf7'] = isset($_POST['mpcsf_custom_field_cf7']) ? esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf7']))) : ( !empty($meta['cf7']) ? esc_html(esc_attr(trim($meta['cf7']))) : '');
+      $_SESSION['mpcsf_custom_field']['cf8'] = isset($_POST['mpcsf_custom_field_cf8']) ? esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf8']))) : ( !empty($meta['cf8']) ? esc_html(esc_attr(trim($meta['cf8']))) : '');
+      $_SESSION['mpcsf_custom_field']['cf9'] = isset($_POST['mpcsf_custom_field_cf9']) ? esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf9']))) : ( !empty($meta['cf9']) ? esc_html(esc_attr(trim($meta['cf9']))) : '');
+      $_SESSION['mpcsf_custom_field']['cf10'] = isset($_POST['mpcsf_custom_field_cf10']) ? esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf10']))) : ( !empty($meta['cf10']) ? esc_html(esc_attr(trim($meta['cf10']))) : '' );
 
       //save to user meta
       if ($current_user->ID)
-          update_user_meta($current_user->ID, 'mpcsf_custom_field', $custom_field_meta);
+          update_user_meta($current_user->ID, 'mpcsf_custom_field', $_SESSION['mpcsf_custom_field']);
 
     }
 
@@ -317,91 +218,26 @@
 
       $meta = get_user_meta($current_user->ID, 'mpcsf_custom_field', true);
 
-      if (isset($_POST['mpcsf_custom_field_cf1'])) {
+      $custom_field_1 = !empty($_SESSION['mpcsf_custom_field']['cf1']) ? esc_html(esc_attr(trim($_SESSION['mpcsf_custom_field']['cf1']))) : ( !empty($meta['cf1']) ? esc_html(esc_attr(trim($meta['cf1']))) : '' ) ;
 
-        $_SESSION['mpcsf_custom_field']['cf1'] = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf1'])));
-        $custom_field_1 = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf1'])));
-      } else {
-        $custom_field_1 = esc_html(esc_attr(trim($meta['cf1'])));
-      }
-        
-      if (isset($_POST['mpcsf_custom_field_cf2'])) {
+      $custom_field_2 = !empty($_SESSION['mpcsf_custom_field']['cf2']) ? esc_html(esc_attr(trim($_SESSION['mpcsf_custom_field']['cf2']))) : ( !empty($meta['cf2']) ? esc_html(esc_attr(trim($meta['cf2']))) : '' ) ;
 
-        $_SESSION['mpcsf_custom_field']['cf2'] = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf2'])));
-        $custom_field_2 = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf2'])));
-      } else {
-        $custom_field_2 = esc_html(esc_attr(trim($meta['cf2'])));
-      }
-        
+      $custom_field_3 = !empty($_SESSION['mpcsf_custom_field']['cf3']) ? esc_html(esc_attr(trim($_SESSION['mpcsf_custom_field']['cf3']))) : ( !empty($meta['cf3']) ? esc_html(esc_attr(trim($meta['cf3']))) : '' ) ;
 
-      if (isset($_POST['mpcsf_custom_field_cf3'])) {
+      $custom_field_4 = !empty($_SESSION['mpcsf_custom_field']['cf4']) ? esc_html(esc_attr(trim($_SESSION['mpcsf_custom_field']['cf4']))) : ( !empty($meta['cf4']) ? esc_html(esc_attr(trim($meta['cf4']))) : '' ) ;
 
-        $_SESSION['mpcsf_custom_field']['cf3'] = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf3'])));
-        $custom_field_3 = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf3'])));
-      } else {
-        $custom_field_3 = esc_html(esc_attr(trim($meta['cf3'])));
-      }
-        
+      $custom_field_5 = !empty($_SESSION['mpcsf_custom_field']['cf5']) ? esc_html(esc_attr(trim($_SESSION['mpcsf_custom_field']['cf5']))) : ( !empty($meta['cf5']) ? esc_html(esc_attr(trim($meta['cf5']))) : '' ) ;
 
-      if (isset($_POST['mpcsf_custom_field_cf4'])) {
+      $custom_field_6 = !empty($_SESSION['mpcsf_custom_field']['cf6']) ? esc_html(esc_attr(trim($_SESSION['mpcsf_custom_field']['cf6']))) : ( !empty($meta['cf6']) ? esc_html(esc_attr(trim($meta['cf6']))) : '' ) ;
 
-        $_SESSION['mpcsf_custom_field']['cf4'] = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf4'])));
-        $custom_field_4 = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf4'])));
-      } else {
-        $custom_field_4 = esc_html(esc_attr(trim($meta['cf4'])));
-      }
-        
+      $custom_field_7 = !empty($_SESSION['mpcsf_custom_field']['cf7']) ? esc_html(esc_attr(trim($_SESSION['mpcsf_custom_field']['cf7']))) : ( !empty($meta['cf7']) ? esc_html(esc_attr(trim($meta['cf7']))) : '' ) ;
 
-      if (isset($_POST['mpcsf_custom_field_cf5'])) {
+      $custom_field_8 = !empty($_SESSION['mpcsf_custom_field']['cf8']) ? esc_html(esc_attr(trim($_SESSION['mpcsf_custom_field']['cf8']))) : ( !empty($meta['cf8']) ? esc_html(esc_attr(trim($meta['cf8']))) : '' ) ;
 
-        $_SESSION['mpcsf_custom_field']['cf5'] = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf5'])));
-        $custom_field_5 = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf5'])));
-      } else {
-        $custom_field_5 = esc_html(esc_attr(trim($meta['cf5'])));
-      }
+      $custom_field_9 = !empty($_SESSION['mpcsf_custom_field']['cf9']) ? esc_html(esc_attr(trim($_SESSION['mpcsf_custom_field']['cf9']))) : ( !empty($meta['cf9']) ? esc_html(esc_attr(trim($meta['cf9']))) : '' ) ;
 
-      if (isset($_POST['mpcsf_custom_field_cf6'])) {
+      $custom_field_10 = !empty($_SESSION['mpcsf_custom_field']['cf10']) ? esc_html(esc_attr(trim($_SESSION['mpcsf_custom_field']['cf10']))) : ( !empty($meta['cf10']) ? esc_html(esc_attr(trim($meta['cf10']))) : '' ) ;
 
-        $_SESSION['mpcsf_custom_field']['cf6'] = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf6'])));
-        $custom_field_6 = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf6'])));
-      } else {
-        $custom_field_6 = esc_html(esc_attr(trim($meta['cf6'])));
-      }
-        
-      if (isset($_POST['mpcsf_custom_field_cf7'])) {
-
-        $_SESSION['mpcsf_custom_field']['cf7'] = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf7'])));
-        $custom_field_7 = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf7'])));
-      } else {
-        $custom_field_7 = esc_html(esc_attr(trim($meta['cf7'])));
-      }
-        
-
-      if (isset($_POST['mpcsf_custom_field_cf8'])) {
-
-        $_SESSION['mpcsf_custom_field']['cf8'] = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf8'])));
-        $custom_field_8 = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf8'])));
-      } else {
-        $custom_field_8 = esc_html(esc_attr(trim($meta['cf8'])));
-      }
-        
-
-      if (isset($_POST['mpcsf_custom_field_cf9'])) {
-
-        $_SESSION['mpcsf_custom_field']['cf9'] = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf9'])));
-        $custom_field_9 = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf9'])));
-      } else {
-        $custom_field_9 = esc_html(esc_attr(trim($meta['cf9'])));
-      }
-        
-
-      if (isset($_POST['mpcsf_custom_field_cf10'])) {
-
-        $_SESSION['mpcsf_custom_field']['cf10'] = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf10'])));
-        $custom_field_10 = esc_html(esc_attr(trim($_POST['mpcsf_custom_field_cf10'])));
-      } else {
-        $custom_field_10 = esc_html(esc_attr(trim($meta['cf10'])));
-      }
 
       $custom_field_meta = array(
           'cf1' => $custom_field_1,

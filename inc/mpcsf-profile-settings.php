@@ -48,7 +48,6 @@
     }
 
 
-
     $custom_field_1 = isset($_POST['mpcsf_custom_field']['cf1']) ? esc_html(esc_attr(trim($_POST['mpcsf_custom_field']['cf1']))) : esc_html(esc_attr(trim($meta['cf1'])));
     $custom_field_2 = isset($_POST['mpcsf_custom_field']['cf2']) ? esc_html(esc_attr(trim($_POST['mpcsf_custom_field']['cf2']))) : esc_html(esc_attr(trim($meta['cf2'])));
     $custom_field_3 = isset($_POST['mpcsf_custom_field']['cf3']) ? esc_html(esc_attr(trim($_POST['mpcsf_custom_field']['cf3']))) : esc_html(esc_attr(trim($meta['cf3'])));
@@ -95,15 +94,13 @@
        $sectiontitle = esc_attr($cfsettings['mpcsfcustom_first_settings_section_title']);
        $enablesectiontitle = esc_attr($cfsettings['mpcsfcustom_first_settings_show_section_title']);
 
-    ?> 
+       $output = '';
 
-      <?php if ($enablesectiontitle == 'yes') { ?>  
-        <h3><?php _e($sectiontitle, 'mpcsf'); ?></h3>
-      <?php } ?>
+      if ($enablesectiontitle == 'yes') { 
+            $output .= '<h3>'.__($sectiontitle, 'mpcsf').'</h3>';
+        }
 
-      <table class="form-table">
-
-        <?php 
+      $output .= '<table class="form-table">';
 
           for ($i=1; $i <= 10; $i++) {
 
@@ -118,83 +115,62 @@
 
               $cf = !empty($_SESSION['mpcsf_custom_field']['cf'.$i]) ? esc_html(esc_attr(trim($_SESSION['mpcsf_custom_field']['cf'.$i]))) : esc_html(esc_attr(trim($meta['cf'.$i])));
 
-              echo '<tr>';
-                echo '<th align="right"><label for="mpcsf_custom_field_'.$i.'">'.__( $cftitle .': ' , 'mpcsf').'&nbsp;</label></th>';
-                  echo '<td>';
-                    echo apply_filters( 'mpcsf_custom_field_'.$i.'_error', '');
+              $output .= '<tr>';
+                $output .= '<th align="right"><label for="mpcsf_custom_field_'.$i.'">'.__( $cftitle .': ' , 'mpcsf').'&nbsp;</label></th>';
+                  $output .= '<td>';
+                    $output .= apply_filters( 'mpcsf_custom_field_'.$i.'_error', '');
 
                     switch ($cftype) {
                       case 'text':
-                        echo '<input size="45" id="mpcsf_custom_field_'.$i.'" name="mpcsf_custom_field[cf'.$i.']" type="text" value="'.esc_attr($cf).'" />';
-                        echo (!empty($cfdesc) ? '<br /><small><em>'.__($cfdesc, 'mpcsf').'</em></small>' : '');
+                        $output .= '<input size="45" id="mpcsf_custom_field_'.$i.'" name="mpcsf_custom_field[cf'.$i.']" type="text" value="'.esc_attr($cf).'" />';
+                        $output .= (!empty($cfdesc) ? '<br /><small><em>'.__($cfdesc, 'mpcsf').'</em></small>' : '');
                         break;
 
                       case 'textarea':
-                        echo '<textarea id="mpcsf_custom_field_'.$i.'" name="mpcsf_custom_field[cf'.$i.']" rows="5">'.esc_attr($cf).'</textarea>';
-                        echo (!empty($cfdesc) ? '<br /><small><em>'.__($cfdesc, 'mpcsf').'</em></small>' : '');
+                        $output .= '<textarea id="mpcsf_custom_field_'.$i.'" name="mpcsf_custom_field[cf'.$i.']" rows="5">'.esc_attr($cf).'</textarea>';
+                        $output .= (!empty($cfdesc) ? '<br /><small><em>'.__($cfdesc, 'mpcsf').'</em></small>' : '');
                         break;
 
                       case 'select':
                         $cf = esc_attr($cf);
-                        echo '<select id="mpcsf_custom_field_'.$i.'" name="mpcsf_custom_field[cf'.$i.']">';
-                          foreach($options as $key=>$value) {
-                            echo '<option value="'.$value.'" '.selected( $cf, $value, false ).'>'.$value.'</option>';
+                        $output .= '<select id="mpcsf_custom_field_'.$i.'" name="mpcsf_custom_field[cf'.$i.']">';
+                          foreach($options as $key=>$cval) {
+                            $output .= '<option value="'.$cval.'"'.(($cval == $cf) ? ' selected="selected"' : '').'>'.$cval.'</option>';
                           }
-                        echo '</select>';
-                        echo (!empty($cfdesc) ? '<br /><small><em>'.__($cfdesc, 'mpcsf').'</em></small>' : '');
+                        $output .= '</select>';
+                        $output .= (!empty($cfdesc) ? '<br /><small><em>'.__($cfdesc, 'mpcsf').'</em></small>' : '');
                         break;
 
                       case 'radio':
                         $cf = esc_attr($cf);
                         foreach($options as $key=>$cval){
-                            echo '<label><input type="radio" id="mpcsf_custom_field_'.$i.'" name="mpcsf_custom_field[cf'.$i.']" value="'. $cval .'"'. (($cval == $cf) ? ' checked="checked"' : '') .' /> '. $cval .'</label><br />';
+                            $output .= '<label><input type="radio" id="mpcsf_custom_field_'.$i.'" name="mpcsf_custom_field[cf'.$i.']" value="'. $cval .'"'. (($cval == $cf) ? ' checked="checked"' : '') .' /> '. $cval .'</label><br />';
                         }
-                        echo (!empty($cfdesc) ? '<br /><small><em>'.__($cfdesc, 'mpcsf').'</em></small>' : '');
+                        $output .= (!empty($cfdesc) ? '<br /><small><em>'.__($cfdesc, 'mpcsf').'</em></small>' : '');
                         break;
 
                       case 'checkbox':
                         $cf = esc_attr($cf);
-                        echo '<input type="hidden" name="mpcsf_custom_field[cf'.$i.']" value="0" />';
-                        echo '<label><input type="checkbox" name="mpcsf_custom_field[cf'.$i.']" id="mpcsf_custom_field_'.$i.'" value="1"'. (($cf) ? ' checked="checked"' : '') .' /> '. (!empty($cfdesc) ? __($cfdesc, 'mpcsf') : '') .'</label>';
-                        break;
-
-                      case 'checkboxes':
-                        $cf = esc_attr($cf);
-                        foreach($options as $key=>$cval){
-                            echo '<input type="hidden" name="mpcsf_custom_field[cf'.$i.']" value="0" />';
-                            echo '<label><input type="checkbox" name="mpcsf_custom_field[cf'.$i.']" id="mpcsf_custom_field_'.$i.'" value="'. $key .'"'. (($key == $cf) ? ' checked="checked"' : '') .' /> '. $cval .'</label><br />';
-                        }
-                        echo (!empty($cfdesc) ? '<br /><small><em>'.__($cfdesc, 'mpcsf').'</em></small>' : '');
-                        break;
-
-                      case 'multiselect':
-                        echo '<select id="mpcsf_custom_field_'.$i.'" multiple="multiple" name="mpcsf_custom_field[cf'.$i.']">';
-                          foreach ($options as $key => $option) {
-                            $selected = (is_array($cf) && in_array($option, $cf)) ? 'selected="selected"' : '';      
-                            echo '<option id="mpcsf_custom_field_'.$i.'_'. $option .'" value="'.$option.'" '. $selected .'>'.$option.'</option>';
-                          }
-                        echo '</select>';
-                        echo (!empty($cfdesc) ? '<br /><small><em>'.__($cfdesc, 'mpcsf').'</em></small>' : '');
+                        $output .= '<input type="hidden" name="mpcsf_custom_field[cf'.$i.']" value="0" />';
+                        $output .= '<label><input type="checkbox" name="mpcsf_custom_field[cf'.$i.']" id="mpcsf_custom_field_'.$i.'" value="1"'. (($cf) ? ' checked="checked"' : '') .' /> '. (!empty($cfdesc) ? __($cfdesc, 'mpcsf') : '') .'</label>';
                         break;
                       
                       default:
-                        echo '<input size="45" id="mpcsf_custom_field_'.$i.'" name="mpcsf_custom_field[cf'.$i.']" type="text" value="'.esc_attr($cf).'" />';
-                        echo (!empty($cfdesc) ? '<br /><small><em>'.__($cfdesc, 'mpcsf').'</em></small>' : '');
+                        $output .= '<input size="45" id="mpcsf_custom_field_'.$i.'" name="mpcsf_custom_field[cf'.$i.']" type="text" value="'.esc_attr($cf).'" />';
+                        $output .= (!empty($cfdesc) ? '<br /><small><em>'.__($cfdesc, 'mpcsf').'</em></small>' : '');
                         break;
                     }
 
-                  echo '</td>';
-              echo '</tr>';
+                  $output .= '</td>';
+              $output .= '</tr>';
 
             }
           }
 
-        ?>
-
-      </table>
-
-    <?php 
+      $output .= '</table>';
 
     }
+
+    echo $output;
 
   }
