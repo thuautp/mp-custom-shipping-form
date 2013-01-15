@@ -58,7 +58,7 @@ $mpcsf_custom[] = array(
         array(
             'id' => 'field_desc',
             'title' => 'Field Description',
-            'desc' => __('Description for the custom field' , 'mpcsf'),
+            'desc' => __('Description for the custom field. Only these HTML tags are allowed: &lt;a&gt;, &lt;br&gt;, &lt;em&gt;, &lt;strong&gt;' , 'mpcsf'),
             'type' => 'textarea',
             'std' => ''
         ),
@@ -132,7 +132,7 @@ $mpcsf_custom[] = array(
         array(
             'id' => 'field_desc',
             'title' => 'Field Description',
-            'desc' => __('Description for the custom field' , 'mpcsf'),
+            'desc' => __('Description for the custom field. Only these HTML tags are allowed: &lt;a&gt;, &lt;br&gt;, &lt;em&gt;, &lt;strong&gt;' , 'mpcsf'),
             'type' => 'textarea',
             'std' => ''
         ),
@@ -206,7 +206,7 @@ $mpcsf_custom[] = array(
         array(
             'id' => 'field_desc',
             'title' => 'Field Description',
-            'desc' => __('Description for the custom field' , 'mpcsf'),
+            'desc' => __('Description for the custom field. Only these HTML tags are allowed: &lt;a&gt;, &lt;br&gt;, &lt;em&gt;, &lt;strong&gt;' , 'mpcsf'),
             'type' => 'textarea',
             'std' => ''
         ),
@@ -280,7 +280,7 @@ $mpcsf_custom[] = array(
         array(
             'id' => 'field_desc',
             'title' => 'Field Description',
-            'desc' => __('Description for the custom field' , 'mpcsf'),
+            'desc' => __('Description for the custom field. Only these HTML tags are allowed: &lt;a&gt;, &lt;br&gt;, &lt;em&gt;, &lt;strong&gt;' , 'mpcsf'),
             'type' => 'textarea',
             'std' => ''
         ),
@@ -354,7 +354,7 @@ $mpcsf_custom[] = array(
         array(
             'id' => 'field_desc',
             'title' => 'Field Description',
-            'desc' => __('Description for the custom field' , 'mpcsf'),
+            'desc' => __('Description for the custom field. Only these HTML tags are allowed: &lt;a&gt;, &lt;br&gt;, &lt;em&gt;, &lt;strong&gt;' , 'mpcsf'),
             'type' => 'textarea',
             'std' => ''
         ),
@@ -428,7 +428,7 @@ $mpcsf_custom[] = array(
         array(
             'id' => 'field_desc',
             'title' => 'Field Description',
-            'desc' => __('Description for the custom field' , 'mpcsf'),
+            'desc' => __('Description for the custom field. Only these HTML tags are allowed: &lt;a&gt;, &lt;br&gt;, &lt;em&gt;, &lt;strong&gt;' , 'mpcsf'),
             'type' => 'textarea',
             'std' => ''
         ),
@@ -502,7 +502,7 @@ $mpcsf_custom[] = array(
         array(
             'id' => 'field_desc',
             'title' => 'Field Description',
-            'desc' => __('Description for the custom field' , 'mpcsf'),
+            'desc' => __('Description for the custom field. Only these HTML tags are allowed: &lt;a&gt;, &lt;br&gt;, &lt;em&gt;, &lt;strong&gt;' , 'mpcsf'),
             'type' => 'textarea',
             'std' => ''
         ),
@@ -576,7 +576,7 @@ $mpcsf_custom[] = array(
         array(
             'id' => 'field_desc',
             'title' => 'Field Description',
-            'desc' => __('Description for the custom field' , 'mpcsf'),
+            'desc' => __('Description for the custom field. Only these HTML tags are allowed: &lt;a&gt;, &lt;br&gt;, &lt;em&gt;, &lt;strong&gt;' , 'mpcsf'),
             'type' => 'textarea',
             'std' => ''
         ),
@@ -650,7 +650,7 @@ $mpcsf_custom[] = array(
         array(
             'id' => 'field_desc',
             'title' => 'Field Description',
-            'desc' => __('Description for the custom field' , 'mpcsf'),
+            'desc' => __('Description for the custom field. Only these HTML tags are allowed: &lt;a&gt;, &lt;br&gt;, &lt;em&gt;, &lt;strong&gt;' , 'mpcsf'),
             'type' => 'textarea',
             'std' => ''
         ),
@@ -724,7 +724,7 @@ $mpcsf_custom[] = array(
         array(
             'id' => 'field_desc',
             'title' => 'Field Description',
-            'desc' => __('Description for the custom field' , 'mpcsf'),
+            'desc' => __('Description for the custom field. Only these HTML tags are allowed: &lt;a&gt;, &lt;br&gt;, &lt;em&gt;, &lt;strong&gt;' , 'mpcsf'),
             'type' => 'textarea',
             'std' => ''
         ),

@@ -106,7 +106,7 @@
 
             $enablecf = $cfsettings['mpcsfcustom_custom_field_'.$i.'_show_field'];
             $cftitle = esc_attr($cfsettings['mpcsfcustom_custom_field_'.$i.'_field_title']);
-            $cfdesc = esc_attr($cfsettings['mpcsfcustom_custom_field_'.$i.'_field_desc']);
+            $cfdesc = wp_kses($cfsettings['mpcsfcustom_custom_field_'.$i.'_field_desc'] , false);
             $cftype = esc_attr($cfsettings['mpcsfcustom_custom_field_'.$i.'_field_type']);
             $cfoptions = esc_attr($cfsettings['mpcsfcustom_custom_field_'.$i.'_field_type_options']);
             $options = !empty($cfoptions) ? explode(",",$cfoptions) : array();

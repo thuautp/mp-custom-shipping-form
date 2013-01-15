@@ -212,7 +212,7 @@ if( !class_exists('MPCSFCustomField') ){
                     if($desc)  echo '<p class="description">'. $desc .'</p>';
                     break;
                 case 'textarea':
-                    $val = esc_html(stripslashes($val));
+                    $val = mpcsf_kses($val , false);
                     echo '<textarea name="'. $this->option_group .'_settings['. $el_id .']" id="'. $el_id .'" rows="5" cols="60" class="widefat '. $class .'">'. $val .'</textarea>';
                     if($desc)  echo '<p class="description">'. $desc .'</p>';
                     break;

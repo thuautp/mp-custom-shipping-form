@@ -24,7 +24,7 @@
 
             $enablecf = $cfsettings['mpcsfcustom_custom_field_'.$i.'_show_field'];
             $cftitle = esc_attr($cfsettings['mpcsfcustom_custom_field_'.$i.'_field_title']);
-            $cfdesc = esc_attr($cfsettings['mpcsfcustom_custom_field_'.$i.'_field_desc']);
+            $cfdesc = mpcsf_kses($cfsettings['mpcsfcustom_custom_field_'.$i.'_field_desc'] , false);
             $cftype = esc_attr($cfsettings['mpcsfcustom_custom_field_'.$i.'_field_type']);
             $cfoptions = esc_attr($cfsettings['mpcsfcustom_custom_field_'.$i.'_field_type_options']);
             $cfrequired = $cfsettings['mpcsfcustom_custom_field_'.$i.'_required_field'];
@@ -471,5 +471,30 @@
       $text = str_replace('MPCSFDETAILS', $customfield, $msg);
 
       return $text;
+
+    }
+
+    function mpcsf_kses($content = '' , $echo = false) {
+
+      $allowed_html = array(
+          'a' => array(
+              'href' => array(),
+              'title' => array(),
+              'target' => array( 
+                '_blank' => array(), 
+                '_self' => array()
+                )
+            ),
+          'br' => array(),
+          'em' => array(),
+          'strong' => array()
+          );
+
+      $content = wp_kses(trim($content) , $allowed_html);
+
+      if ($echo)
+        echo $content;
+      else
+        return $content;
 
     }

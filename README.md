@@ -1,7 +1,7 @@
 MarketPress Custom Shipping Form Plugin
 =======================================
 
-~Current Version:1.1.2~
+~Current Version:1.1.3~
 
 Author: Nathan Onn - <a href="http://www.marketpressthemes.com">MarketPressThemes.com</a>
 
@@ -24,6 +24,9 @@ From time to time, we'll be releasing <b>more themes and plugins</b> (free and p
 If you're new to <a href="http://www.marketpressthemes.com" target="_blank">MarketPressThemes.com</a>, You might want to <a href="http://www.marketpressthemes.com/login" target="_blank">create a free account</a> with us to stay in the loop of the latest development of our themes and plugins.
 
 <h2><u>Change Log</u></h2>
+
+Version 1.1.3 -
+	Allow selected HTML tags in field description box 
 
 Version 1.1.2 - 
 	Fixed empty cookies issue in safari.
