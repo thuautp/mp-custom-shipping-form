@@ -1,3 +1,6 @@
+Version 1.1.5 -
+	Show custom field data on admin Order Notification email
+
 Version 1.1.3 -
 	Allow selected HTML tags in field description box 
 

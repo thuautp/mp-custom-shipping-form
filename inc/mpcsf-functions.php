@@ -474,6 +474,79 @@
 
     }
 
+    function mpcsf_customfield_filter_email_order_notification_admin( $msg = '' , $order = array()) {
+
+      $meta = get_post_meta($order->ID, 'mpcsf_custom_field');
+
+      $cfsettings = wpsf_get_settings( MPCSF_PATH .'inc/mpcsf-custom.php' );
+
+      $customfield = '';
+
+      if (!empty($cfsettings)) {
+
+        $enableadminemail = esc_attr($cfsettings['mpcsfcustom_first_settings_show_data_in_admin_email']);
+
+        if ($enableadminemail == 'yes') {
+
+          $sectiontitle = esc_attr($cfsettings['mpcsfcustom_first_settings_section_title']);
+
+          $customfield .= "\n\n";
+          $customfield .= $sectiontitle . ':';
+
+          for ($i=1; $i <= 10; $i++) {
+
+              $enablecf = $cfsettings['mpcsfcustom_custom_field_'.$i.'_show_field'];
+              $cftitle = esc_attr($cfsettings['mpcsfcustom_custom_field_'.$i.'_field_title']);
+              $cftype = esc_attr($cfsettings['mpcsfcustom_custom_field_'.$i.'_field_type']);
+
+              if ($enablecf == 'yes') {
+
+                $cf = esc_html(esc_attr(trim($meta[0]['cf'.$i])));
+
+                $customfield .= "\n" .__( $cftitle .': ' , 'mpcsf');
+
+                switch ($cftype) {
+                  case 'text':
+                    $customfield .= esc_attr($cf);
+                    break;
+
+                  case 'textarea':
+                    $customfield .= "\n" . esc_attr($cf);
+                    break;
+
+                  case 'select':
+                    $customfield .= esc_attr($cf);
+                    break;
+
+                  case 'radio':
+                    $customfield .= esc_attr($cf);
+                    break;
+
+                  case 'checkbox':
+                    $customfield .= ($cf) ? 'Yes' : 'No';
+                    break;
+                  
+                  default:
+                    $customfield .= esc_attr($cf);
+                    break;
+                }
+              }
+
+            }
+
+          $customfield .= "\n\n";
+
+        }
+      }
+
+      //replace
+      $text = $msg;
+      $text .= $customfield;
+
+      return $text;
+
+    }
+
     function mpcsf_kses($content = '' , $echo = false) {
 
       $allowed_html = array(

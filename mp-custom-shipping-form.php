@@ -5,11 +5,11 @@ Plugin URI: http://www.smashingadvantage.com
 Description: MarketPress Custom Shipping Form Plugin allows you to insert (up to 10) custom fields into the shipping form of your MarketPress sites. This plugin aims to take the pain out of customize your MarketPress shipping form manually and making it very simple for you to customize your shipping form with no technical knowledge needed.
 Author: Nathan Onn - MarketPressThemes.com
 Author URI: http://www.smashingadvantage.com
-Version: 1.1.3
+Version: 1.1.5
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Copyright 2012 Smashing Advantage Enterprise.
+Copyright 2012 - 2013 Smashing Advantage Enterprise.
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (Version 2 - GPLv2) as published by
@@ -78,6 +78,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 				  	// Order notification email
 				  	add_action( 'mp_new_order' , 'mpcsf_customfield_add_filter_order_notification');
 				  	add_filter( 'mp_shipped_order_notification' , 'mpcsf_customfield_filter_email_order_notification' , 10 , 2);
+				  	add_filter( 'mp_order_notification_admin_msg' , 'mpcsf_customfield_filter_email_order_notification_admin' , 10 , 2);
 
 				  	//updater
 				  	add_action( 'init', array(&$this, 'mpcsf_plugin_updater_init') );

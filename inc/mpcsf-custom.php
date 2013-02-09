@@ -26,6 +26,17 @@ $mpcsf_custom[] = array(
             'desc' => __('The title of the custom field section' , 'mpcsf'),
             'type' => 'text',
             'std' => 'Additional Info:'
+        ),
+        array(
+            'id' => 'show_data_in_admin_email',
+            'title' => 'Show Custom Field Data in Admin Order Notification email',
+            'desc' => __('By default, this option is disabled. If you want to enable this option, then simply select "Yes".' , 'mpcsf'),
+            'type' => 'radio',
+            'std' => 'no',
+            'choices' => array(
+                'yes' => 'Yes',
+                'no' => 'No'
+            )
         )
     )
 );
