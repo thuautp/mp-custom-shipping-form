@@ -186,7 +186,7 @@
 
       for ($i=1; $i <= 10; $i++) {
           if (empty($_POST['mpcsf_custom_field_cf'.$i])) {
-            if ($cfsettings['mpcsfcustom_custom_field_'.$i.'_required_field'] == 'yes') {
+            if ( $cfsettings['mpcsfcustom_custom_field_'.$i.'_show_field'] == 'yes' && $cfsettings['mpcsfcustom_custom_field_'.$i.'_required_field'] == 'yes') {
               add_filter('mpcsf_custom_field_'.$i.'_error' , 'mpcsf_customfield_error_message');
               $mp->checkout_error = true;
             }

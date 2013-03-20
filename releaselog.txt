@@ -1,3 +1,6 @@
+Version 1.1.6 - 
+	Fixed required field error in shipping page
+
 Version 1.1.5 -
 	Show custom field data on admin Order Notification email
 

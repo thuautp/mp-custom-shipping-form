@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: MP Custom Shipping Form
-Plugin URI: http://www.smashingadvantage.com
+Plugin URI: http://www.marketpressthemes.com
 Description: MarketPress Custom Shipping Form Plugin allows you to insert (up to 10) custom fields into the shipping form of your MarketPress sites. This plugin aims to take the pain out of customize your MarketPress shipping form manually and making it very simple for you to customize your shipping form with no technical knowledge needed.
 Author: Nathan Onn - MarketPressThemes.com
-Author URI: http://www.smashingadvantage.com
-Version: 1.1.5
+Author URI: http://www.marketpressthemes.com
+Version: 1.1.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
