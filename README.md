@@ -1,7 +1,11 @@
 MarketPress Custom Shipping Form Plugin
 =======================================
 
-~Current Version:1.1.6~
+<h2><u>**IMPORTANT**</u></h2>
+
+<strong>This plugin has been deprecated. It'll no longer be maintained nor supported.</strong> Anyway, I've created another new plugin called <a href="http://www.marketpressthemes.com/get-mp-mojo"><strong>MarketPress Mojo</strong></a> that inherits everything from this plugin, as well as other very cool features for MarketPress. You can get it here: http://www.marketpressthemes.com/get-mp-mojo
+
+
 
 Author: Nathan Onn - <a href="http://www.marketpressthemes.com">MarketPressThemes.com</a>
 
